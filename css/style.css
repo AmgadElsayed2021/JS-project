@@ -1,0 +1,30 @@
+body {
+  font-family: sans-serif;
+  background-color: skyblue;
+}
+h1 {
+  color: blue;
+  text-align: center;
+}
+ul {
+  list-style: none;
+  margin: 0 auto;
+  max-width: 780px;
+  text-align: center;
+  padding: 0;
+  display: block;
+}
+ul li {
+  padding: 5px;
+  background: #ffffff;
+  margin: 5px;
+  display: inline-block;
+}
+a {
+  text-decoration: none;
+}
+ul li img {
+  display: block;
+  width: 130px;
+  height: 100px;
+}
