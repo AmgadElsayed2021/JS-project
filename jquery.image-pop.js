@@ -8,6 +8,7 @@
           width: "30px",
           height: "30px",
         },
+
         imageBorder: "5px solid #ffffff",
         borderRadius: "5px",
         imageWidth: "500px",
@@ -17,8 +18,20 @@
           color: "#fffffff",
           fontSize: "20px",
         },
+        RightNavBtn: {
+          src: null,
+          width: "30px",
+          height: "30px",
+        },
+        LeftNavBtn: {
+          src: null,
+          width: "30px",
+          height: "30px",
+        },
         open: null,
         close: null,
+        right: null,
+        left: null,
       },
       options
     );
@@ -27,9 +40,16 @@
      */
     return this.each(function () {
       // declaring new element variable
-      let $overLay, $closeButton, $image, $imageCaption;
+      let $overLay,
+        $closeButton,
+        $image,
+        $imageCaption,
+        $RightNavBtn,
+        $LeftNavBtn;
       //   call the functions
       setOverLayProperties();
+      setRightNavBtnProperties();
+      setLeftNavBtnProperties();
       setCloseBtnProperties();
       setImageProperties();
 
@@ -109,6 +129,66 @@
       $closeButton.click(function () {
         if ($.isFunction(settings.close)) {
           settings.close.call(this);
+        }
+        $overLay.animate({ opacity: 0.1 }, function () {
+          $overLay.hide();
+        });
+      });
+      function setRightNavBtnProperties() {
+        const prop = {
+          color: "white",
+          cursor: "pointer",
+          "font-size": "20px",
+          width: settings.RightNavBtn.width,
+          height: settings.RightNavBtn.height,
+          position: "absolute",
+          top: "5px",
+          right: "5px",
+          border: "0px",
+          "z-index": "1",
+        };
+        if (settings.RightNavBtn.src) {
+          $RightNavBtn = $("<img>");
+          $RightNavBtn.attr("src", settings.RightNavBtn.src);
+        } else {
+          $RightNavBtn = $("<span>></span>");
+        }
+        $RightNavBtn.css(prop);
+        $overLay.append($RightNavBtn);
+      }
+      $RightNavBtn.click(function () {
+        if ($.isFunction(settings.right)) {
+          settings.right.call(this);
+        }
+        $overLay.animate({ opacity: 0.1 }, function () {
+          $overLay.hide();
+        });
+      });
+      function setLeftNavBtnProperties() {
+        const prop = {
+          color: "white",
+          cursor: "pointer",
+          "font-size": "20px",
+          width: settings.LeftNavBtn.width,
+          height: settings.LeftNavBtn.height,
+          position: "absolute",
+          top: "5px",
+          right: "5px",
+          border: "0px",
+          "z-index": "1",
+        };
+        if (settings.LeftNavBtn.src) {
+          $LeftNavBtn = $("<img>");
+          $LeftNavBtn.attr("src", settings.LeftNavBtn.src);
+        } else {
+          $LeftNavBtn = $("<span><</span>");
+        }
+        $LeftNavBtn.css(prop);
+        $overLay.append($LeftNavBtn);
+      }
+      $LeftNavBtn.click(function () {
+        if ($.isFunction(settings.left)) {
+          settings.left.call(this);
         }
         $overLay.animate({ opacity: 0.1 }, function () {
           $overLay.hide();

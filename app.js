@@ -5,6 +5,16 @@ $("#images").imagePopup({
     width: "40px",
     height: "40px",
   },
+  LeftNavBtn: {
+    src: "images/left.png",
+    width: "120px",
+    height: "120px",
+  },
+  RightNavBtn: {
+    src: "images/right.png",
+    width: "40px",
+    height: "40px",
+  },
   imageBorder: "15px solid #ffffff",
   borderRadius: "10px",
   imageWidth: "500px",
