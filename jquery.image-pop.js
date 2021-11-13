@@ -20,13 +20,13 @@
         },
         RightNavBtn: {
           src: null,
-          width: "30px",
-          height: "30px",
+          width: "50px",
+          height: "50px",
         },
         LeftNavBtn: {
           src: null,
-          width: "30px",
-          height: "30px",
+          width: "50px",
+          height: "50px",
         },
         open: null,
         close: null,
@@ -47,9 +47,8 @@
         $RightNavBtn,
         $LeftNavBtn;
       //   call the functions
+
       setOverLayProperties();
-      setRightNavBtnProperties();
-      setLeftNavBtnProperties();
       setCloseBtnProperties();
       setImageProperties();
 
@@ -57,7 +56,7 @@
         .find("a")
         .on("click", function (event) {
           event.preventDefault();
-          const imageSrc = $(this).children("img").attr("src");
+          const imageSrc = $(this).siblings().children("img").attr("src");
           $image.attr("src", imageSrc);
           if (settings.imageCaption.exist == true) {
             const caption = $(this).children("img").attr("alt");
@@ -70,6 +69,8 @@
         });
 
       function setImageProperties() {
+        setLeftNavBtnProperties();
+
         $image = $("<img>");
         $image.css({
           width: settings.imageWidth,
@@ -78,6 +79,8 @@
           "border-radius": settings.borderRadius,
         });
         $overLay.append($image);
+        setRightNavBtnProperties();
+
         if (settings.imageCaption.exist == true) {
           $imageCaption = $("<p></p>");
           $imageCaption.css({
@@ -141,7 +144,7 @@
           "font-size": "20px",
           width: settings.RightNavBtn.width,
           height: settings.RightNavBtn.height,
-          position: "absolute",
+          position: "center",
           top: "5px",
           right: "5px",
           border: "0px",
@@ -171,7 +174,7 @@
           "font-size": "20px",
           width: settings.LeftNavBtn.width,
           height: settings.LeftNavBtn.height,
-          position: "absolute",
+          position: "center",
           top: "5px",
           right: "5px",
           border: "0px",

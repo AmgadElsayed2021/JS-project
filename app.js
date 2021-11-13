@@ -12,17 +12,17 @@ $("#images").imagePopup({
   },
   RightNavBtn: {
     src: "images/right.png",
-    width: "40px",
-    height: "40px",
+    width: "120px",
+    height: "120px",
   },
-  imageBorder: "15px solid #ffffff",
+  imageBorder: "15px solid #554455",
   borderRadius: "10px",
   imageWidth: "500px",
   imageHeight: "400px",
   imageCaption: {
     exist: true,
-    color: "#fffffff",
-    fontSize: "60px",
+    color: "#883319",
+    fontSize: "80px",
   },
   open: function () {
     console.log("opened");

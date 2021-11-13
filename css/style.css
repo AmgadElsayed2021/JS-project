@@ -1,22 +1,22 @@
 body {
   font-family: sans-serif;
-  background-color: skyblue;
+  background-color: rgb(91, 104, 36);
 }
 h1 {
-  color: blue;
+  color: rgb(238, 216, 20);
   text-align: center;
 }
 ul {
   list-style: none;
   margin: 0 auto;
-  max-width: 780px;
+  max-width: 100%;
   text-align: center;
   padding: 0;
   display: block;
 }
 ul li {
   padding: 5px;
-  background: #ffffff;
+  background: #b2d31f;
   margin: 5px;
   display: inline-block;
 }
@@ -25,6 +25,6 @@ a {
 }
 ul li img {
   display: block;
-  width: 130px;
-  height: 100px;
+  width: 250px;
+  height: 200px;
 }
