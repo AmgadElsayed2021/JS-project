@@ -56,7 +56,7 @@
         .find("a")
         .on("click", function (event) {
           event.preventDefault();
-          const imageSrc = $(this).siblings().children("img").attr("src");
+          const imageSrc = $(this).children("img").attr("src");
           $image.attr("src", imageSrc);
           if (settings.imageCaption.exist == true) {
             const caption = $(this).children("img").attr("alt");
@@ -190,12 +190,19 @@
         $overLay.append($LeftNavBtn);
       }
       $LeftNavBtn.click(function () {
-        if ($.isFunction(settings.left)) {
-          settings.left.call(this);
+        // event.preventDefault();
+        const imageSrc = $(this).children("img").prev().attr("src");
+        const next = imageSrc.next();
+        console.log(next.attr("alt"));
+        $image.attr("src", imageSrc);
+        if (settings.imageCaption.exist == true) {
+          const caption = $(this).children("img").prev().attr("alt");
+          $imageCaption.text(caption);
         }
-        $overLay.animate({ opacity: 0.1 }, function () {
-          $overLay.hide();
-        });
+        if ($.isFunction(settings.open)) {
+          settings.open.call(this);
+        }
+        $overLay.css({ opacity: 0.1 }).show().animate({ opacity: 1 });
       });
     });
   };
