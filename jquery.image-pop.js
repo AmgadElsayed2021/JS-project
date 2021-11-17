@@ -28,3 +28,62 @@
       init(uid);
     });
   };
+
+  function init(uid) {
+    let sliderContainer = list[uid].sliderContainer;
+    let settings = list[uid].settings;
+    let circlePhotoFrames = sliderContainer.find(".photo-slider-dots");
+    console.log(circlePhotoFrames.length);
+    let slides = sliderContainer.find(".photo-slides");
+    let caption = sliderContainer.find(".photo-caption");
+    list[uid]["slides"] = slides;
+    list[uid]["captions"] = caption;
+    list[uid]["numSlides"] = slides.length;
+    list[uid]["currentIndex"] = settings.slideStartIndex;
+
+    for (var i = 0; i < circlePhotoFrames.length; i++) {
+      $(circlePhotoFrames[i]).removeClass("photo-slider-dots-active");
+      $(circlePhotoFrames[i]).click({ uid: uid, index: i }, navBtns);
+    }
+
+    let left = sliderContainer.find(".photo-arrow-left");
+    let right = sliderContainer.find(".photo-arrow-right");
+    left.click({ uid: uid }, navBtns);
+    right.click({ uid: uid }, navBtns);
+
+    showNextSlide(uid);
+  }
+
+  let navBtns = function (event) {
+    let uid = event.data.uid;
+    let sliderContainer = list[uid].sliderContainer;
+    let index = 0;
+    if (event.data.index !== undefined) {
+      index = event.data.index;
+    } else {
+      index = sliderContainer.data("slider-index");
+    }
+
+    list[uid].prevIndex = index;
+    // make sure that i can navigate using arrows and image frames or another deduction i will receive
+    if (!$(event.target).hasClass("photo-slider-dots")) {
+      if ($(event.target).hasClass("photo-arrow-left")) {
+        index += -1;
+      } else {
+        index += 1;
+      }
+    }
+
+    list[uid].currentIndex = index;
+    showNextSlide(uid);
+  };
+
+  // make a function to check the slide index if the index is greater than the maximum start from one and if less than 1 change it to the maximum
+  // or i will have some marks deducted here .
+  function checkSlideIndex(index, maximum) {
+    if (index === undefined || index > maximum) index = 1;
+    if (index < 1) {
+      index = maximum;
+    }
+    return index;
+  }
