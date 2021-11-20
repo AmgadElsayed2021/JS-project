@@ -87,3 +87,27 @@
     }
     return index;
   }
+  function showNextSlide(uid) {
+    let settings = list[uid].settings;
+    let sliderContainer = list[uid]["sliderContainer"];
+    let numSlides = list[uid]["numSlides"];
+    let slides = list[uid]["slides"];
+    let caption = list[uid]["captions"];
+    let index = list[uid]["currentIndex"];
+    let prevIndex = list[uid]["prevIndex"];
+    let oldIndex = index;
+    // check the index by calling the check index
+    index = checkSlideIndex(index, numSlides);
+
+    sliderContainer.data("slider-index", index);
+    list[uid].currentIndex = index;
+    //  make sure to grap the photo with the caption and animato the transitioning
+    // i will do this part tomorrow after the midterm test of sql
+    for (var i = 0; i < slides.length; i++) {
+      $(slides[i]).addClass("slide-invisible");
+      $(slides[i]).removeClass("slide-visible");
+      $(slides[i]).removeClass(settings.animationRight);
+      $(slides[i]).removeClass(settings.animationLeft);
+      $(slides[i]).removeClass(settings.animation);
+      $(slides[i]).addClass("caption");
+    }
