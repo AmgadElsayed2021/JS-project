@@ -33,7 +33,7 @@
     let sliderContainer = list[uid].sliderContainer;
     let settings = list[uid].settings;
     let circlePhotoFrames = sliderContainer.find(".photo-slider-dots");
-    console.log(circlePhotoFrames.length);
+    // console.log(circlePhotoFrames.length);
     let slides = sliderContainer.find(".photo-slides");
     let caption = sliderContainer.find(".photo-caption");
     list[uid]["slides"] = slides;
@@ -87,6 +87,7 @@
     }
     return index;
   }
+
   function showNextSlide(uid) {
     let settings = list[uid].settings;
     let sliderContainer = list[uid]["sliderContainer"];
@@ -106,8 +107,65 @@
     for (var i = 0; i < slides.length; i++) {
       $(slides[i]).addClass("slide-invisible");
       $(slides[i]).removeClass("slide-visible");
+      // console.log($(slides[i]));
       $(slides[i]).removeClass(settings.animationRight);
       $(slides[i]).removeClass(settings.animationLeft);
       $(slides[i]).removeClass(settings.animation);
       $(slides[i]).addClass("caption");
     }
+
+    if (settings.animate) {
+      $(slides[index - 1]).removeClass("slide-invisible");
+      if (settings.animation === "normal") {
+        $(slides[index - 1]).css(
+          "opacity",
+          0.19,
+          "max-width",
+          "100%",
+          "max-height",
+          "100%",
+          "margin",
+          "auto",
+          "padding",
+          "0",
+          "display",
+          "block",
+          "position",
+          " relative"
+        );
+        $(slides[index - 1]).animate(
+          {
+            opacity: 1,
+          },
+          settings.duration,
+          settings.easing,
+          settings.fadOut,
+          settings.fadeIn,
+          function () {
+            $(slides[index - 1]).addClass("slide-visible");
+          }
+        );
+      } else if (settings.animation === "css") {
+        if (prevIndex < oldIndex)
+          // if the prev image index is smaller than the old index use animate right
+          $(slides[index - 1]).addClass(settings.animationRight);
+        // else animate left
+        else $(slides[index - 1]).addClass(settings.animationLeft);
+      }
+    } else {
+      $(slides[index - 1]).removeClass("slide-invisible");
+      $(slides[index - 1]).addClass("slide-visible");
+    }
+  }
+
+  $.fn.imageSlider.settingsDefault = {
+    slideStartIndex: 1,
+    animate: true,
+    animation: "normal",
+    duration: 3000,
+    fadeIn: 2000,
+    fadOut: 1000,
+    easing: "linear", //easein, linear, ...
+    /* i will style the caption  area here */
+  };
+})(jQuery);
