@@ -22,7 +22,7 @@ body element:-
 i divided this element into 2 parts:-
 part 1 :- divided into 3 sections:-
   section 1 will have the image and caption part for each image in the below format
-<!--           <div class="photo-slides"> -->
+####           <div class="photo-slides"> ##
 <!--             <img src="image link goes here"> -->
 <!--             <p class="photo-caption">put the caption here</p> -->
 <!--         </div> -->
