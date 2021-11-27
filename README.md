@@ -22,11 +22,11 @@ body element:-
 i divided this element into 2 parts:-
 part 1 :- divided into 3 sections:-
   section 1 will have the image and caption part for each image in the below format
-          <div class="photo-slides">
+       /*   <div class="photo-slides">
             <img src="image link goes here">
             <p class="photo-caption">put the caption here</p>
 
-        </div>
+        </div>*/
   section 2 will have the navigation arrows
   section 3 will have a span  element where we will display a small image in a circular frame for each image in section 1 
   make sure that the images in section 3 are in the same sequence of the image in section 1
