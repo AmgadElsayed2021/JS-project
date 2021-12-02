@@ -22,23 +22,35 @@ a jquery min link
 /*i divided this element into 2 parts:-
 /*part 1 :- divided into 3 sections:-
 /*  section 1 will have the image and caption part for each image in the below format
-/*  to see this format you need to download the Readme.md file
-<pre><code>          
+/*  to see this format you need to download the Readme.md file this is incase if it was hidden
+
+
+```         
 <div class="photo-slides"> 
 <img src="image link goes here"> 
 <p class="photo-caption">put the caption here</p>
 </div>
-</code></pre
+```
 /*  section 2 will have the navigation arrows
 /*  section 3 will have a span  element where we will display a small image in a circular frame for each image in section 1 
 /*  make sure that the images in section 3 are in the same sequence of the image in section 1
-<!--             <span class="photo-slider-dots"><img src="image link goes here"></span> -->
+``` 
+<span class="photo-slider-dots"><img src="image link goes here"></span>
+```
  /* part 2:-
-/*  this is where we eill connect the html to the ja files
+/*  this is where we will connect the html to the j files
 /*  we will start with adding this jquery link :-
-<!--         <script src="https://code.jquery.com/jquery-3.6.0.min.js""></script> -->
+```  
+<script src="https://code.jquery.com/jquery-3.6.0.min.js""></script>
+```
 /*  then we must link the jqueryPlugin  file
+```
+    <script src=" js/jquery.image-slider.js"></script>
+```
 /*  then the app.js file
+```
+    <script src="js/app.js"></script>
+```
  /* you will find the last 2 files in the js folder that you have downloaded from this repository.
   
   
