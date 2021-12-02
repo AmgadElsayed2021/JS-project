@@ -23,10 +23,12 @@ a jquery min link
 /*part 1 :- divided into 3 sections:-
 /*  section 1 will have the image and caption part for each image in the below format
 /*  to see this format you need to download the Readme.md file
-<!--           <div class="photo-slides">  -->
-<!--             <img src="image link goes here"> -->
-<!--             <p class="photo-caption">put the caption here</p> -->
-<!--         </div> -->
+<pre><code>          
+<div class="photo-slides"> 
+<img src="image link goes here"> 
+<p class="photo-caption">put the caption here</p>
+</div>
+</code></pre
 /*  section 2 will have the navigation arrows
 /*  section 3 will have a span  element where we will display a small image in a circular frame for each image in section 1 
 /*  make sure that the images in section 3 are in the same sequence of the image in section 1
